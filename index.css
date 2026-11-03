@@ -1,0 +1,335 @@
+:root {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --accent-color: #6366f1;
+  --accent-hover: #4f46e5;
+  --text-color: #f8fafc;
+  --text-muted: #94a3b8;
+  
+  --hp-color: #ef4444;
+  --mp-color: #3b82f6;
+  --exp-color: #10b981;
+  --gold-color: #f59e0b;
+  --border-color: #334155;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.game-header h1 {
+  font-size: 2.2rem;
+  color: #e2e8f0;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr 300px;
+  gap: 20px;
+}
+
+@media (max-width: 992px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Статы и полосы */
+h2, h3 {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 6px;
+}
+
+.stat-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bold-val {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bar-label {
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bar-outer {
+  background: #0f172a;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.bar {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.hp-fill { background: var(--hp-color); }
+.mp-fill { background: var(--mp-color); }
+.exp-fill { background: var(--exp-color); }
+.enemy-hp-fill { background: #dc2626; }
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: var(--border-color);
+  margin: 16px 0;
+}
+
+.stats-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.gold-text {
+  color: var(--gold-color);
+  font-weight: bold;
+}
+
+.equipment-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eq-slot {
+  font-size: 0.9rem;
+  background: #0f172a;
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.slot-title {
+  color: var(--text-muted);
+}
+
+/* Боевая арена */
+.location-picker {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: #334155;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #475569;
+}
+
+.btn-loc.active {
+  background: var(--accent-color);
+}
+
+.battle-arena {
+  background: #0f172a;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.enemy-avatar {
+  font-size: 4rem;
+  margin-bottom: 8px;
+  user-select: none;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.enemy-hp-box {
+  max-width: 250px;
+  margin: 10px auto 0;
+}
+
+.action-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.btn-action {
+  padding: 12px;
+  font-size: 0.95rem;
+}
+
+.btn-attack { background: #991b1b; }
+.btn-attack:hover { background: #b91c1c; }
+
+.btn-magic { background: #1e40af; }
+.btn-magic:hover { background: #1d4ed8; }
+
+.btn-heal { background: #065f46; }
+.btn-heal:hover { background: #047857; }
+
+.btn-run { background: #475569; }
+.btn-run:hover { background: #64748b; }
+
+.log-container h3 {
+  border: none;
+  margin-bottom: 6px;
+}
+
+.log-content {
+  background: #0f172a;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  height: 130px;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+}
+
+.log-entry { margin: 2px 0; }
+.log-player { color: #60a5fa; }
+.log-enemy { color: #f87171; }
+.log-system { color: #fbbf24; }
+.log-reward { color: #34d399; }
+
+/* Вкладки и Инвентарь */
+.tab-buttons {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.tab-btn {
+  flex: 1;
+  background: #0f172a;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+}
+
+.tab-btn.active {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-bottom: 1px solid var(--card-bg);
+  font-weight: bold;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.item-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.item-card {
+  background: #0f172a;
+  padding: 8px 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--border-color);
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.item-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.btn-sm {
+  padding: 4px 8px;
+  font-size: 0.75rem;
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPG Mini Game</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="game-container">
+    <header class="game-header">
+      <h1>⚔️ Хроники Героя ⚔️</h1>
+      <p class="subtitle">Пошаговое RPG приключение</p>
+    </header>
+
+    <div class="main-grid">
+      <!-- Панель персонажа -->
+      <section class="card stats-card">
+        <h2>🦸 Персонаж</h2>
+        <div class="stat-group">
+          <div class="stat-row">
+            <span>Уровень:</span>
+            <span id="player-level" class="bold-val">1</span>
+          </div>
+          
+          <div class="bar-container">
+            <div class="bar-label"> Здоровье: <span id="hp-text">100 / 100</span></div>
+            <div class="bar-outer"><div id="hp-bar" class="bar hp-fill" style="width: 100%;"></div></div>
+          </div>
+
+          <div class="bar-container">
+            <div class="bar-label"> Мана: <span id="mp-text">50 / 50</span></div>
+            <div class="bar-outer"><div id="mp-bar" class="bar mp-fill" style="width: 100%;"></div></div>
+          </div>
+
+          <div class="bar-container">
+            <div class="bar-label"> Опыт: <span id="exp-text">0 / 100</span></div>
+            <div class="bar-outer"><div id="exp-bar" class="bar exp-fill" style="width: 0%;"></div></div>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="stats-details">
+          <div class="stat-item">⚔️ Атака: <span id="player-atk">15</span></div>
+          <div class="stat-item">🛡️ Защита: <span id="player-def">5</span></div>
+          <div class="stat-item">💰 Золото: <span id="player-gold" class="gold-text">50</span></div>
+        </div>
+
+        <h3>🎒 Снаряжение</h3>
+        <div class="equipment-slots">
+          <div class="eq-slot">
+            <span class="slot-title">Оружие:</span>
+            <span id="eq-weapon" class="slot-value">Ржавый меч (+0)</span>
+          </div>
+          <div class="eq-slot">
+            <span class="slot-title">Броня:</span>
+            <span id="eq-armor" class="slot-value">Тканевая рубаха (+0)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Зона боя / Локации -->
+      <section class="card combat-card">
+        <div class="location-picker">
+          <button class="btn btn-loc active" onclick="selectLocation('forest')">🌲 Тёмный Лес</button>
+          <button class="btn btn-loc" onclick="selectLocation('cave')">🪨 Пещера Гоблинов</button>
+          <button class="btn btn-loc" onclick="selectLocation('dungeon')">🔥 Подземелье Дракона</button>
+        </div>
+
+        <div class="battle-arena">
+          <div id="enemy-sprite" class="enemy-avatar">🐺</div>
+          <h2 id="enemy-name">Дикий Волк</h2>
+          
+          <div class="bar-container enemy-hp-box">
+            <div class="bar-label"> HP Врага: <span id="enemy-hp-text">40 / 40</span></div>
+            <div class="bar-outer"><div id="enemy-hp-bar" class="bar enemy-hp-fill" style="width: 100%;"></div></div>
+          </div>
+        </div>
+
+        <div class="action-panel">
+          <button class="btn btn-action btn-attack" onclick="playerAttack()">⚔️ Атака</button>
+          <button class="btn btn-action btn-magic" onclick="playerMagic()">🔥 Магия (15 MP)</button>
+          <button class="btn btn-action btn-heal" onclick="playerHeal()">🧪 Зелье HP</button>
+          <button class="btn btn-action btn-run" onclick="findNewEnemy()">🔄 Искать врага</button>
+        </div>
+
+        <div class="log-container">
+          <h3>📜 Журнал боя</h3>
+          <div id="combat-log" class="log-content">
+            <p class="log-entry log-system">Вы вошли в Тёмный Лес. Впереди виден враг!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Инвентарь и Лавка -->
+      <section class="card shop-card">
+        <div class="tab-buttons">
+          <button class="tab-btn active" onclick="switchTab('inventory')">Инвентарь</button>
+          <button class="tab-btn" onclick="switchTab('shop')">Магазин</button>
+        </div>
+
+        <div id="tab-inventory" class="tab-content active">
+          <ul id="inventory-list" class="item-list">
+            <!-- Заполняется из JS -->
+          </ul>
+        </div>
+
+        <div id="tab-shop" class="tab-content">
+          <ul id="shop-list" class="item-list">
+            <!-- Заполняется из JS -->
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
